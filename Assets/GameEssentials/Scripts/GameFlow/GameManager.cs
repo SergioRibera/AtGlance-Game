@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
         /*playerSR.color = skinSelected.tintable ?
             (skinSelected.colorRandom ? RandomColor : skinSelected.colorSelect) :
             new Color(1, 1, 1, .8f);*/
-        playerSR.color = new Color(1, 1, 1, 0.003921569f);
+        playerSR.color = new Color(1, 1, 1, 0f);
         InstantiateAlerts();
         player.GetComponent<PlayerController>().SetPoints(points);
         yield return null;

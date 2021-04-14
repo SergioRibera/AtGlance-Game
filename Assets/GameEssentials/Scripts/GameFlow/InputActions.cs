@@ -266,6 +266,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ClickCursor"",
+                    ""type"": ""Button"",
+                    ""id"": ""481d1c4c-5f81-4f41-aba7-c116ad438ba9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -499,6 +507,28 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""MoveCursor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e70a33e0-3d26-47e6-b7ee-55f2be5ebefd"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ClickCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a394373-add2-486c-a6f3-ebaed7dc9eaa"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ClickCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -541,6 +571,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MovePlayer = m_Player.FindAction("MovePlayer", throwIfNotFound: true);
         m_Player_MoveCursor = m_Player.FindAction("MoveCursor", throwIfNotFound: true);
+        m_Player_ClickCursor = m_Player.FindAction("ClickCursor", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -633,12 +664,14 @@ public class @InputActions : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_MovePlayer;
     private readonly InputAction m_Player_MoveCursor;
+    private readonly InputAction m_Player_ClickCursor;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MovePlayer => m_Wrapper.m_Player_MovePlayer;
         public InputAction @MoveCursor => m_Wrapper.m_Player_MoveCursor;
+        public InputAction @ClickCursor => m_Wrapper.m_Player_ClickCursor;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -654,6 +687,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @MoveCursor.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveCursor;
                 @MoveCursor.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveCursor;
                 @MoveCursor.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveCursor;
+                @ClickCursor.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickCursor;
+                @ClickCursor.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickCursor;
+                @ClickCursor.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickCursor;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -664,6 +700,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @MoveCursor.started += instance.OnMoveCursor;
                 @MoveCursor.performed += instance.OnMoveCursor;
                 @MoveCursor.canceled += instance.OnMoveCursor;
+                @ClickCursor.started += instance.OnClickCursor;
+                @ClickCursor.performed += instance.OnClickCursor;
+                @ClickCursor.canceled += instance.OnClickCursor;
             }
         }
     }
@@ -695,5 +734,6 @@ public class @InputActions : IInputActionCollection, IDisposable
     {
         void OnMovePlayer(InputAction.CallbackContext context);
         void OnMoveCursor(InputAction.CallbackContext context);
+        void OnClickCursor(InputAction.CallbackContext context);
     }
 }

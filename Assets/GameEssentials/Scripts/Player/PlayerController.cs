@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Users;
 
 public class PlayerController : MonoBehaviour {
 
@@ -25,6 +26,26 @@ public class PlayerController : MonoBehaviour {
             inputMovePlayer = ctx.ReadValue<Vector2>();
         };
         inputActions.Player.MovePlayer.canceled += ctx => inputMovePlayer = Vector2.zero;
+
+        inputActions.Player.MoveCursor.performed += ctx => inputMoveCursor = ctx.ReadValue<Vector2>();
+        inputActions.Player.MoveCursor.canceled += ctx => inputMoveCursor = Vector2.zero;
+        inputActions.Player.ClickCursor.performed += ctx => {
+            if (Physics2D.Raycast(Vector2.zero, inputMoveCursor)){
+                print("You Win");
+            }
+        };
+        InputUser.onChange += (user, change, device) => {
+            if (change == InputUserChange.ControlSchemeChanged) {
+                switch(user.controlScheme.Value.name){
+                    case "Gamepad":
+                        //buttonImage.sprite = gamepadImage;
+                        break;
+                    default:
+                        //buttonImage.sprite = keyboardImage;
+                        break;
+                }
+            }
+        };
     }
     void OnEnable() => inputActions.Enable();
     void Disable() => inputActions.Disable();
@@ -55,12 +76,10 @@ public class PlayerController : MonoBehaviour {
             transform.Translate(x, 0, 0);
         if (screenPos.x > 0 && x < 0) 
             transform.Translate(x, 0, 0);
-
     }
 
     public void SetPoints(List<Transform> points) => pointsToDetect = points;
-
-    void OnMouseDown() {
-        print("Click Me");    
+    void OnMouseUpAsButton () {
+        print("Click Me");
     }
 }
