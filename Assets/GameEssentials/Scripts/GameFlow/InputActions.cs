@@ -255,7 +255,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""name"": ""MovePlayer"",
                     ""type"": ""Value"",
                     ""id"": ""c66b8947-e7e0-4546-9dc4-380b5d973804"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -271,10 +271,10 @@ public class @InputActions : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": ""ASD"",
-                    ""id"": ""1eaa7687-bb20-4517-93e6-963b0a346329"",
+                    ""id"": ""5facc708-32cc-476d-8f15-dab682872b16"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MovePlayer"",
                     ""isComposite"": true,
@@ -282,7 +282,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""9f945b07-edbc-4484-b9a3-ed654cd4ef7e"",
+                    ""id"": ""a9b146be-d62b-404b-b936-9b6b48a213c1"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -293,7 +293,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""dda05fe2-3abb-4d69-8749-bbf9cb4ab6ad"",
+                    ""id"": ""c1e85fad-0d2d-4130-a3d5-8e948946f1c9"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -304,7 +304,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""1944c0d9-146e-4a70-855e-99f88cb52ee7"",
+                    ""id"": ""c27e20c6-33cc-44ff-bd68-535495a63208"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -315,7 +315,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""8ed804aa-f401-4976-91c2-60d2ae4d8ead"",
+                    ""id"": ""3139d62f-9af9-4171-85f1-51537b6804a2"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -326,18 +326,18 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Gamepad"",
-                    ""id"": ""0362462e-cbbe-4adb-8497-77375ae4a06f"",
+                    ""id"": ""82f1bda0-2a78-4eb4-85c6-fc9e27d41d83"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Gamepad"",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""MovePlayer"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""d0a1968d-a2ca-4c2d-867a-a1964120e0fe"",
+                    ""id"": ""c4fb5527-ca71-43e3-ac84-3311804abf25"",
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -348,7 +348,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""4068ba96-a6a4-4ec4-8362-01a7316f3a9c"",
+                    ""id"": ""ef9145f0-6ade-4ebd-bac5-8576772985c7"",
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -359,7 +359,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""1c8a81c8-f665-401e-9d79-cf21bd67f22f"",
+                    ""id"": ""19d89360-a619-4359-9485-c498c5ccc591"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -370,7 +370,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""5d84ed7d-6b77-471c-af25-6cff1b13983e"",
+                    ""id"": ""dc57a0b0-0ee7-4235-bb1c-b0a284e20f94"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",

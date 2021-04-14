@@ -17,15 +17,17 @@ public class PlayerController : MonoBehaviour {
     InputActions inputActions;
     float x, y;
 
-    void Start(){
+    void Awake(){
         rb = GetComponent<Rigidbody2D>();
         pos = Vector2.zero;
         inputActions = new InputActions();
-        inputActions.Player.MovePlayer.started += ctx => {
+        inputActions.Player.MovePlayer.performed += ctx => {
             inputMovePlayer = ctx.ReadValue<Vector2>();
         };
         inputActions.Player.MovePlayer.canceled += ctx => inputMovePlayer = Vector2.zero;
     }
+    void OnEnable() => inputActions.Enable();
+    void Disable() => inputActions.Disable();
 
     void LateUpdate(){
         for (int i = 0; i < pointsToDetect.Count; i++){
