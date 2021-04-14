@@ -13,11 +13,18 @@ public class PlayerController : MonoBehaviour {
 
     float distance, size;
     Rigidbody2D rb;
-    Vector2 pos;
+    Vector2 pos, inputMovePlayer, inputMoveCursor;
+    InputActions inputActions;
+    float x, y;
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         pos = Vector2.zero;
+        inputActions = new InputActions();
+        inputActions.Player.MovePlayer.started += ctx => {
+            inputMovePlayer = ctx.ReadValue<Vector2>();
+        };
+        inputActions.Player.MovePlayer.canceled += ctx => inputMovePlayer = Vector2.zero;
     }
 
     void LateUpdate(){
@@ -32,11 +39,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    float x, y;
     Vector3 screenPos;
-    void FixedUpdate(){
-        x = Input.GetAxisRaw("Horizontal") * playerVelocity * Time.fixedDeltaTime;
-        y = Input.GetAxisRaw("Vertical") * playerVelocity * Time.fixedDeltaTime;
+    void Update(){
+        x = inputMovePlayer.x * playerVelocity * Time.deltaTime;
+        y = inputMovePlayer.y * playerVelocity * Time.deltaTime;
 
         screenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (screenPos.y < Screen.height && y > 0) 
@@ -49,6 +55,8 @@ public class PlayerController : MonoBehaviour {
             transform.Translate(x, 0, 0);
 
     }
+
+    public void SetPoints(List<Transform> points) => pointsToDetect = points;
 
     void OnMouseDown() {
         print("Click Me");    
